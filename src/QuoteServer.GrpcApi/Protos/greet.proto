@@ -1,0 +1,99 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "GrpcService";
+
+package quote;
+
+service QuoteService {
+  rpc SubscribeTo (SubscribeToRequest) returns (stream OrderBookChanged);
+  rpc UpdatableSubscribeTo (stream UpdatableSubscribeToRequest) returns (stream OrderBookChanged);
+  rpc GetL3OrderBookSnapshot (GetL3OrderBookSnapshotRequest) returns (L3OrderBookSnapshot);
+}
+
+message SubscribeToRequest {
+    Pair pair = 1;
+}
+
+message UpdatableSubscribeToRequest {
+   repeated Pair pairs = 1;
+}
+
+message GetL3OrderBookSnapshotRequest {
+    Pair pair = 1;
+}
+
+message L3OrderBookSnapshot {
+    sint64 Sequence = 1;
+    repeated Order Asks =2;
+    repeated Order Bids =3;
+}
+
+message Order {
+    string Id = 1;
+    DecimalValue Price = 2;
+    DecimalValue Size = 3;
+}
+
+message OrderBookChanged {
+    string name = 1;
+    Pair pair = 2;
+    OrderSide Side = 3;
+    DecimalValue Price = 4;
+    sint64 sequence = 5;
+    google.protobuf.Timestamp timestamp = 6;
+  
+    oneof instrument {
+        Changed changed = 7;
+        Opened opened = 8;
+        Closed closed = 9;
+        Matched matched = 10;
+      } 
+}
+
+message Changed {
+    DecimalValue newSize = 1;
+    string id =2;
+}
+
+message Opened {
+    string id = 1;
+    DecimalValue Size = 2;    
+}
+
+message Closed {
+    Reason Reason =1;
+    string id =2;
+}
+
+message Matched {
+    string MakerOrderId = 1;
+    string TakerOrderId = 2;
+    DecimalValue Size = 3;
+}
+
+message DecimalValue {
+    int64 units = 1;
+    sfixed32 nanos = 2;
+}
+
+enum Pair {
+    BTC_USDT = 0;
+    BTC_USDC = 1;  
+    Eth_Usd = 2;
+    Xrp_Btc = 3;
+    Eth_Dai = 4;
+    Dash_Usd = 5;
+    Atom_Btc = 6;
+}
+
+enum Reason {
+    Canceled = 0;
+    Filled = 1;  
+}
+
+enum OrderSide {
+    Buy = 0;
+    Sell = 1;
+}

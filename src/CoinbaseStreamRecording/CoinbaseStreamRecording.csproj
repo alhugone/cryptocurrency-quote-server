@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Coinbase.QuoteSource\Coinbase.QuoteSource.csproj" />
+      <ProjectReference Include="..\CoinbasePro\CoinbasePro.csproj" />
+      <ProjectReference Include="..\QuoteServer.OrderBook\QuoteServer.OrderBook.csproj" />
+      <ProjectReference Include="..\TestsInfrastructureHelpers\TestsInfrastructureHelpers.csproj" />
+    </ItemGroup>
+
+</Project>

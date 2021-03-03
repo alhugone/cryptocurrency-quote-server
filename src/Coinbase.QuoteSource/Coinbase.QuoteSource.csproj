@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup><!--      <PackageReference Include="GDAX.Api.ClientLibrary" Version="1.0.47" />-->
+    
+      <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="5.0.1" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\CoinbasePro\CoinbasePro.csproj" />
+        <ProjectReference Include="..\QuoteServer.OrderBook\QuoteServer.OrderBook.csproj" />
+    </ItemGroup>
+</Project>
