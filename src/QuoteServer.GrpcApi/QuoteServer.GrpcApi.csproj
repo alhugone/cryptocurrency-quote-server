@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+      <UserSecretsId>e25dc23f-551f-497c-9be2-c36542a454b0</UserSecretsId>
+      <RootNamespace>GrpcService</RootNamespace>
+  </PropertyGroup>
+
+    <ItemGroup>
+        <Protobuf Include="Protos\greet.proto" GrpcServices="Server" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Grpc.AspNetCore" Version="2.34.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Coinbase.QuoteSource\Coinbase.QuoteSource.csproj" />
+      <ProjectReference Include="..\QuoteServer.OrderBook\QuoteServer.OrderBook.csproj" />
+    </ItemGroup>
+
+</Project>

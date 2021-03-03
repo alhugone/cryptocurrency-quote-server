@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>git://github.com/dougdellolio/coinbasepro-csharp</RepositoryUrl>
+    <Authors>Doug Dellolio</Authors>
+    <LangVersion>latest</LangVersion>
+    <Version>1.0.47</Version>
+    <PackageId>GDAX.Api.ClientLibrary</PackageId>
+    <Description>The unofficial .NET/C# client for the Coinbase Pro / GDAX API</Description>
+    <PackageLicenseUrl>https://github.com/dougdellolio/coinbasepro-csharp/blob/master/LICENSE</PackageLicenseUrl>
+    <Copyright>Copyright 2021</Copyright>
+    <PackageProjectUrl>https://github.com/dougdellolio/coinbasepro-csharp</PackageProjectUrl>
+    <PackageTags>coinbase pro gdax c# client library api coinbase rest ethereum bitcoin coinbasepro</PackageTags>
+    <PackageReleaseNotes>Coinbase Pro API C# Client Library</PackageReleaseNotes>
+    <PackageIcon>coinbasepro.jpg</PackageIcon>
+    <Nullable>disable</Nullable>    
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Castle.Core" Version="4.3.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="Serilog" Version="2.7.1" />
+    <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Reports\Models\Responses\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\coinbasepro.jpg">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
